@@ -12,7 +12,7 @@ function RocketGame() {
 
   const startGame = async () => {
     try {
-      await axios.post("http://localhost:8080/game/start?bet=" + bet);
+      await axios.post("https://rocket-backend-62wj.onrender.com/game/start?bet=" + bet);
       setStatus("Running");
       setMultiplier(1.0);
       setMessage("");
@@ -25,7 +25,7 @@ function RocketGame() {
 
   const tickGame = async () => {
     try {
-      const res = await axios.post("http://localhost:8080/game/tick");
+      const res = await axios.post("https://rocket-backend-62wj.onrender.com/game/tick");
       setMultiplier(res.data.multiplier);
 
       if (!res.data.running) {
@@ -40,7 +40,7 @@ function RocketGame() {
 
   const cashOut = async () => {
     try {
-      const res = await axios.post("http://localhost:8080/game/cashout");
+      const res = await axios.post("https://rocket-backend-62wj.onrender.com/game/cashout");
       setMessage(res.data);
       setStatus("Cashed Out");
       clearInterval(intervalRef.current);
